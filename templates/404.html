@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block title %}404 Page Not Found - ApptiMock{% endblock title %}
+
+{% block content %}
+<style>
+    h1{
+        font-size: 100px;
+        color: lightcoral;
+    }
+</style>
+<div class="container my-5">
+<h1 class="text-center">404 Not Found</h1>
+
+<a href="{% url 'home' %}" class="btn btn-lg">Go to Home Page</a>
+</div>
+
+{% endblock content %}

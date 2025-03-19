@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}@{{ request.user.username }} Profile Delete Confirmation - ApptiMock{% endblock title %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4 rounded-3" style="max-width: 500px; width: 100%;">
+        <div class="card-body text-center">
+            <h2 class="text-danger fw-bold">Confirm Deletion</h2>
+            <p class="fs-5 mt-3">
+                <b>@{{ request.user.username }}</b>, are you sure you want to delete your profile?
+            </p>
+            
+            <form action="" method="POST" class="mt-4">
+                {% csrf_token %}
+                <div class="d-grid gap-2">
+                    <a href="{% url 'profile' request.user.username %}" class="btn btn-secondary btn-lg">
+                        <i class="bi bi-arrow-left"></i> Back to Profile
+                    </a>
+                    <input class="btn btn-danger btn-lg" type="submit" value="Confirm Deletion">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

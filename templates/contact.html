@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+{% block title %}Contact Us - ApptiMock{% endblock title %}
+
+{% block content %}
+
+<h1 class="display-4 text-center my-5">Contact Us</h1>
+<style>
+	/* General Styling */
+body {
+    background-color: #f8f9fa; /* Light Gray Background */
+    color: #333;
+}
+
+/* Contact Form */
+.contact-form {
+    border: 2px solid #007bff; /* Blue Border */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.2); /* Soft Blue Glow */
+}
+
+/* Form Labels */
+.contact-form label {
+    font-weight: bold;
+    color: #007bff; /* Blue Labels */
+}
+
+/* Form Inputs */
+.contact-form .form-control {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.contact-form .form-control:focus {
+    border-color: #6610f2; /* Purple Focus */
+    box-shadow: 0px 0px 8px rgba(102, 16, 242, 0.4);
+}
+
+/* Submit Button */
+.contact-form .btn-primary {
+    background-color: #007bff;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #6610f2;
+    border-color: #6610f2;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-form .btn-primary {
+        font-size: 16px;
+    }
+}
+
+</style>
+<main>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<form action="" method="post" class="contact-form">
+					{% csrf_token %}
+					<div class="form-group mb-4">
+						<label for="username">Username</label>
+						<input type="text" id="username" name="username" value="{{request.user.username}}" class="form-control" disabled>
+					</div>
+
+					<div class="form-group mb-4">
+						<label for="subject">Subject</label>
+						<input type="text" id="subject" name="subject" required class="form-control">
+					</div>
+
+					<div class="form-group mb-4">
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5" required class="form-control"></textarea>
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-block">Send Message</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>
+
+{% endblock content %}

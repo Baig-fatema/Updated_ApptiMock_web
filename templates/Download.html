@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% block title %}Downloads - ApptiMock{% endblock title %}
+{% load static %}
+
+{% block content %}
+<h1 class="display-4 text-center my-5 text-primary fw-bold">📥 Downloads</h1>
+
+<main>
+    <div class="container col-lg-8 col-md-10 col-sm-12">
+        
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-dark fw-bold"><i class="bi bi-file-earmark-text"></i> TCS - Previous Year Question Papers</h2>
+                <p class="text-muted">Download TCS Previous Year Question Papers to prepare effectively for the recruitment process.</p>
+                <div class="ratio ratio-16x9 mb-3 border rounded">
+                    <iframe src="{% static 'resources/files/TCS.pdf' %}"></iframe>
+                </div>
+                <a href="{% static 'resources/files/TCS.pdf' %}" class="btn btn-outline-primary w-100 fw-bold" download>
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-dark fw-bold"><i class="bi bi-file-earmark-text"></i> Wipro - Previous Year Question Papers</h2>
+                <p class="text-muted">Access Wipro’s previous exam papers for better insights into the question format.</p>
+                <div class="ratio ratio-16x9 mb-3 border rounded">
+                    <iframe src="{% static 'resources/files/wipro.pdf' %}"></iframe>
+                </div>
+                <a href="{% static 'resources/files/wipro.pdf' %}" class="btn btn-outline-primary w-100 fw-bold" download>
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-dark fw-bold"><i class="bi bi-file-earmark-text"></i> Infosys - Previous Year Question Papers</h2>
+                <p class="text-muted">Infosys exam papers to help you understand the recruitment test pattern.</p>
+                <div class="ratio ratio-16x9 mb-3 border rounded">
+                    <iframe src="{% static 'resources/files/infosyspyq.pdf' %}"></iframe>
+                </div>
+                <a href="{% static 'resources/files/infosyspyq.pdf' %}" class="btn btn-outline-primary w-100 fw-bold" download>
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-dark fw-bold"><i class="bi bi-file-earmark-text"></i> Cognizant - Previous Year Question Papers</h2>
+                <p class="text-muted">Cognizant’s past papers for a comprehensive understanding of the recruitment test.</p>
+                <div class="ratio ratio-16x9 mb-3 border rounded">
+                    <iframe src="{% static 'resources/files/cognizant.pdf' %}"></iframe>
+                </div>
+                <a href="{% static 'resources/files/cognizant.pdf' %}" class="btn btn-outline-primary w-100 fw-bold" download>
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+{% endblock content %}

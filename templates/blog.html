@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block title %}{{ blog.title }} - ApptiMock{% endblock title %}
+
+{% block content %}
+
+<!-- Blog Title -->
+<h1 class="display-20 text-center my-5 text-primary fw-bold">{{ blog.title|title }}</h1>
+
+<!-- Blog Container -->
+<div class="container col-md-8 col-sm-12">
+    <!-- Blog Meta Information -->
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+        <div>
+            <h6 class="text-muted mb-1"><i class="fas fa-user-edit"></i> Author</h6>
+            <a href="{% url 'profile' blog.author.username %}" class="fw-bold text-dark text-decoration-none">
+                @{{ blog.author.username }}
+            </a>
+        </div>
+        <div>
+            <h6 class="text-muted mb-1"><i class="fas fa-clock"></i> Published</h6>
+            <span class="text-dark">{{ blog.created_at|timesince }} ago</span>
+        </div>
+        <div>
+            <h6 class="text-muted mb-1"><i class="fas fa-sync-alt"></i> Updated</h6>
+            <span class="text-dark">{{ blog.updated_at|timesince }} ago</span>
+        </div>
+    </div>
+
+    <!-- Blog Content -->
+    <article class="blog-post p-4 rounded shadow-sm bg-light">
+        {{ blog.content|safe }}
+    </article>
+</div>
+
+<!-- Custom Styles -->
+<style>
+    .blog-post {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #007bff;
+    }
+
+    .shadow-sm {
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .shadow-sm:hover {
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+{% endblock content %}

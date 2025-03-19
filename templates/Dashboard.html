@@ -1,0 +1,157 @@
+{% extends 'index.html' %}
+
+{% block title %}Dashboard - ApptiMock{% endblock title %}
+
+{% block content %}
+
+<!-- Page Title -->
+<h1 class="display-4 text-center my-5 text-primary fw-bold">Dashboard</h1>
+
+<!-- Dashboard Cards -->
+<div class="container">
+    <div class="row g-4">
+        <!-- Active Users Card -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body text-center py-4">
+                    <h1 class="card-title text-success fw-bold">{{ total_users }}</h1>
+                    <p class="card-text text-muted">Active Users</p>
+                    <ul class="list-group mt-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Today
+                            <span class="badge bg-primary rounded-pill">{{ today_users }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Gain %
+                            <span class="badge bg-primary rounded-pill">{{ gain_users|default:0 }}%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quizzes Card -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body text-center py-4">
+                    <h1 class="card-title text-warning fw-bold">{{ total_quizes }}</h1>
+                    <p class="card-text text-muted">Quizzes</p>
+                    <ul class="list-group mt-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Today
+                            <span class="badge bg-primary rounded-pill">{{ today_quizzes }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Gain %
+                            <span class="badge bg-primary rounded-pill">{{ gain_quizzes|default:0 }}%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submissions Card -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body text-center py-4">
+                    <h1 class="card-title text-info fw-bold">{{ total_quiz_submit }}</h1>
+                    <p class="card-text text-muted">Submissions</p>
+                    <ul class="list-group mt-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Today
+                            <span class="badge bg-primary rounded-pill">{{ today_quiz_submit }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Gain %
+                            <span class="badge bg-primary rounded-pill">{{ gain_quiz_submit|default:0 }}%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questions Card -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body text-center py-4">
+                    <h1 class="card-title text-danger fw-bold">{{ total_questions }}</h1>
+                    <p class="card-text text-muted">Questions</p>
+                    <ul class="list-group mt-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Today
+                            <span class="badge bg-primary rounded-pill">{{ today_questions }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Gain %
+                            <span class="badge bg-primary rounded-pill">{{ gain_questions|default:0 }}%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inbox Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4 text-center text-secondary fw-bold">Inbox</h2>
+            <div class="table-responsive">
+                <table class="table table-hover shadow-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message in messages %}
+                        <tr class="{% if not message.is_read %}table-warning{% endif %}">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>
+                                <a href="{% url 'profile' message.user.username %}" class="text-decoration-none">
+                                    @{{ message.user.username }}
+                                </a>
+                            </td>
+                            <td>{{ message.subject }}</td>
+                            <td>{{ message.created_at }}</td>
+                            <td>
+                                <a href="{% url 'message' message.id %}" class="btn btn-sm btn-outline-primary">Open</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No messages found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+    .card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .badge {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+</style>
+
+{% endblock content %}

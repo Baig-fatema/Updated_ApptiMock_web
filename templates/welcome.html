@@ -1,0 +1,312 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<!-- ✨ Engaging Introduction Section -->
+<div class="container text-center my-5">
+    <h1 class="display-4 fw-bold text-primary my-2">🚀 Welcome to ApptiMock!</h1>
+    <p class="fs-5 text-muted">
+        <strong>Unlock your dream job</strong> with the ultimate placement preparation platform!  
+        Sharpen your <strong>technical</strong> & <strong>aptitude skills</strong>, take on <b>challenging quizzes</b>,  
+        and track your progress like a pro. 🎯  
+    </p>
+    <p class="fs-5 text-secondary">
+        Ready to ace your next placement test?  
+        <b>Join thousands of students</b> in mastering the most asked coding and aptitude problems.  
+    </p>
+    <!-- 🎯 CTA Buttons -->
+    <div class="d-inline-flex gap-3 mb-5">
+        <a href="{% url 'all_quiz' %}" class="btn btn-lg btn-primary px-4">🔥 Take a Quiz</a>
+        {% if not request.user.is_authenticated %}
+        <a href="{% url 'register' %}" class="btn btn-lg btn-outline-secondary px-4">📌 Sign Up</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- 📚 Free Resources Section -->
+<div class="container my-5">
+    <h2 class="text-center fw-bold text-success mb-4">📖 Free Resources for Placement</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/images/indiabix.png" class="card-img-top" alt="IndiaBix">
+                <div class="card-body">
+                    <h5 class="card-title">IndiaBix Aptitude</h5>
+                    <p class="card-text">Master aptitude & logical reasoning with IndiaBix.</p>
+                    <a href="https://www.indiabix.com/" class="btn btn-success" target="_blank">Explore</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/images/GFG.png" class="card-img-top" alt="GFG Aptitude">
+                <div class="card-body">
+                    <h5 class="card-title">GFG Aptitude Prep</h5>
+                    <p class="card-text">GeeksforGeeks' best aptitude questions for placements.</p>
+                    <a href="https://www.geeksforgeeks.org/aptitude-questions-and-answers/" class="btn btn-warning" target="_blank">Explore</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/images/HitBullsEye.png" class="card-img-top" alt="Hitbullseye">
+                <div class="card-body">
+                    <h5 class="card-title">HitBullsEye</h5>
+                    <p class="card-text">One-stop solution for online aptitude & mock tests.</p>
+                    <a href="https://www.hitbullseye.com/" class="btn btn-danger" target="_blank">Explore</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/images/Sanfoundry.png" class="card-img-top" alt="Sanfoundry">
+                <div class="card-body">
+                    <h5 class="card-title">Sanfoundry MCQs</h5>
+                    <p class="card-text">1000+ free MCQs for CS, Electrical & Mechanical fields.</p>
+                    <a href="https://www.sanfoundry.com/" class="btn btn-info" target="_blank">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🏢 Current Job Updates -->
+<div class="container my-5">
+    <h2 class="text-center fw-bold text-primary mb-4">💼 Latest Job Updates</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/images/Online Study 4 You.png" class="card-img-top" alt="Job Updates">
+                <div class="card-body">
+                    <h5 class="card-title">Online Study 4 You</h5>
+                    <p class="card-text">Get latest job updates & government job notifications.</p>
+                    <a href="https://onlinestudy4u.in/category/job-updates/" class="btn btn-primary" target="_blank">Visit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/images/Online Learning YouTube.png" class="card-img-top" alt="Online Learning">
+                <div class="card-body">
+                    <h5 class="card-title">Online Learning YouTube</h5>
+                    <p class="card-text">Best platform for job notifications & free learning.</p>
+                    <a href="https://www.youtube.com/channel/UCcyogDO_BD5HS7YlySkTELQ" class="btn btn-dark" target="_blank">Visit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/images/growwithsakshi.png" class="card-img-top" alt="Grow with Sakshi">
+                <div class="card-body">
+                    <h5 class="card-title">Grow With Sakshi</h5>
+                    <p class="card-text">Latest IT job openings & placement tips.</p>
+                    <a href="https://www.youtube.com/channel/UCYwqyS-hlYdRGHmx8PB6KYg" class="btn btn-danger" target="_blank">Visit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🤖 Chatbot Section -->
+<div class="chatbot-container" id="chatbot-container">
+    <div id="chatbot" class="chatbox">
+        <div class="chatbox-header">
+            💬 AI Assistant
+            <span class="toggle-btn" id="toggle-btn" onclick="toggleChatbot()">—</span>
+        </div>
+        <div id="chatbox-body" class="chatbox-body"></div>
+        <input type="text" id="userInput" class="chatbox-input" placeholder="Ask me anything...">
+        <button onclick="sendMessage()" class="chatbox-btn">Send</button>
+    </div>
+</div>
+
+<!-- Minimized Chatbot Button -->
+<div id="minimized-chatbot" class="minimized-chatbot" onclick="toggleChatbot()">
+    🔲 AI Assistant
+</div>
+
+<!-- 🤖 Chatbot Script -->
+<script>
+    function toggleChatbot() {
+        var chatbot = document.getElementById("chatbot-container");
+        var minimizedChatbot = document.getElementById("minimized-chatbot");
+        var toggleBtn = document.getElementById("toggle-btn");
+
+        if (chatbot.style.display === "none") {
+            chatbot.style.display = "block";
+            minimizedChatbot.style.display = "none";
+            toggleBtn.innerHTML = "—"; // Minimize icon
+        } else {
+            chatbot.style.display = "none";
+            minimizedChatbot.style.display = "flex";
+            toggleBtn.innerHTML = "🔲"; // Maximize icon
+        }
+    }
+</script>
+
+<style>
+/* Chatbot container */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Chatbox header */
+.chatbox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Toggle button for minimize/maximize */
+.toggle-btn {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.toggle-btn:hover {
+    color: #ffcccc;
+}
+
+/* Minimized chatbot button */
+.minimized-chatbot {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.minimized-chatbot:hover {
+    background: #0056b3;
+}
+</style>
+
+
+<!-- 🤖 Chatbot Script -->
+<!-- 🤖 Chatbot JavaScript -->
+<script>
+    function sendMessage() {
+        var userText = document.getElementById("userInput").value;
+        if (userText.trim() === "") return;
+
+        var chatboxBody = document.getElementById("chatbox-body");
+        chatboxBody.innerHTML += "<p><strong>You:</strong> " + userText + "</p>";
+
+        // Send data to Django backend
+        fetch("{% url 'chatbot_response' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": getCookie("csrftoken")
+            },
+            body: "message=" + encodeURIComponent(userText)
+        })
+        .then(response => response.json())
+        .then(data => {
+            chatboxBody.innerHTML += "<p><strong>Bot:</strong> " + data.response + "</p>";
+            chatboxBody.scrollTop = chatboxBody.scrollHeight;
+        });
+
+        document.getElementById("userInput").value = "";
+    }
+
+    // CSRF Token function for Django AJAX requests
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
+
+<style>
+    
+    /* Ensuring uniform image size */
+.card-img-top {
+    width: 100%; 
+    height: 180px; /* Adjust height as needed */
+    object-fit: cover; /* Ensures images are properly cropped */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Styling for the card */
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling */
+.card .btn {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button hover effect */
+.card .btn:hover {
+    transform: scale(1.05);
+}
+.card-img-top {
+    width: 100%; 
+    height: auto; /* Adjusts height automatically */
+    max-height: 180px; /* Ensures uniformity */
+    object-fit: contain; /* Prevents image cropping */
+    padding: 10px; /* Adds spacing around the image */
+    background-color: #f8f9fa; /* Light background to maintain uniformity */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.chatbot-container {
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+    background-color: #f8f9fa; /* Light gray background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 400px; /* Set a max width */
+    margin: auto; /* Center it */
+}
+
+
+</style>
+
+{% endblock content %}

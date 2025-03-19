@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+
+{% block title %}@{{ request.user.username }} Profile Edit - ApptiMock{% endblock title %}
+
+{% block content %}
+
+<!-- Page Title -->
+<h1 class="display-4 text-center my-5 text-primary">Edit Profile</h1>
+
+<!-- Edit Profile Form Container -->
+<div class="container d-flex justify-content-center">
+    <div class="card shadow-lg border-0 rounded-4 p-4 w-50">
+        
+        <!-- Profile Image Preview -->
+        <div class="text-center">
+            <img src="{{ user_profile.profile_image.url }}" alt="profile-pic" width="150" height="150"
+                class="rounded-circle shadow-lg border border-3 p-1 profile-img">
+        </div>
+
+        <!-- Display Messages -->
+        {% for message in messages %}
+        <div class="alert alert-danger text-center my-3" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        <!-- Edit Profile Form -->
+        <form action="" method="POST" enctype="multipart/form-data" class="mt-4">
+            {% csrf_token %}
+
+            <!-- Profile Image Upload -->
+            <div class="mb-3">
+                <label for="profileImage" class="form-label fw-bold">Profile Image</label>
+                <input type="file" name="profile_img" class="form-control" id="profileImage">
+            </div>
+
+            <!-- First Name -->
+            <div class="mb-3">
+                <label for="firstName" class="form-label fw-bold">First Name</label>
+                <input type="text" name="firstname" value="{{ user_profile.user.first_name }}" class="form-control"
+                    id="firstName" placeholder="First Name" required>
+            </div>
+
+            <!-- Last Name -->
+            <div class="mb-3">
+                <label for="lastName" class="form-label fw-bold">Last Name</label>
+                <input type="text" name="lastname" value="{{ user_profile.user.last_name }}" class="form-control"
+                    id="lastName" placeholder="Last Name" required>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Email</label>
+                <input type="email" name="email" value="{{ user_profile.user.email }}" class="form-control" id="email"
+                    placeholder="Email" required>
+            </div>
+
+            <!-- Username -->
+            <div class="mb-3">
+                <label for="username" class="form-label fw-bold">Username</label>
+                <input type="text" name="username" value="{{ user_profile.user.username }}" class="form-control"
+                    id="username" placeholder="Username" required>
+            </div>
+
+            <!-- Location -->
+            <div class="mb-3">
+                <label for="location" class="form-label fw-bold">Location</label>
+                <input type="text" name="location" value="{{ user_profile.location }}" class="form-control"
+                    id="location" placeholder="Location" required>
+            </div>
+
+            <!-- Gender Selection -->
+            <div class="mb-3">
+                <label for="gender" class="form-label fw-bold">Gender</label>
+                <select class="form-select" name="gender" id="gender" required>
+                    <option selected>Choose Your Gender</option>
+                    <option {% if user_profile.gender == 'Male' %}selected{% endif %} value="Male">Male</option>
+                    <option {% if user_profile.gender == 'Female' %}selected{% endif %} value="Female">Female</option>
+                    <option {% if user_profile.gender == 'Other' %}selected{% endif %} value="Other">Other</option>
+                </select>
+            </div>
+
+            <!-- Bio -->
+            <div class="mb-3">
+                <label for="bio" class="form-label fw-bold">Your Bio</label>
+                <textarea class="form-control" name="bio" id="bio" rows="3" placeholder="Your Bio"
+                    required>{{ user_profile.bio }}</textarea>
+            </div>
+
+            <!-- Save Profile Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-success btn-lg px-5">Save Profile</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+    .profile-img {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .btn-lg {
+        border-radius: 10px;
+        font-weight: bold;
+    }
+</style>
+
+{% endblock content %}
