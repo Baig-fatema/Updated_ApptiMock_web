@@ -28,7 +28,7 @@ Follow these steps to set up the project on your local machine:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Baig-fatema/ApptiMock-Quiz-Application.git
+git clone https://github.com/Baig-fatema/Updated_ApptiMock_web.git
 ```
 ### Navigate to the Project Directory
 ```bash
