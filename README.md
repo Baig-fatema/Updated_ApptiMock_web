@@ -32,7 +32,7 @@ git clone https://github.com/Baig-fatema/Updated_ApptiMock_web.git
 ```
 ### Navigate to the Project Directory
 ```bash
-cd ApptiMock-Quiz-Application
+cd Updated_ApptiMock_web
 ```
 ### Create a Virtual Environment
 ```bash
