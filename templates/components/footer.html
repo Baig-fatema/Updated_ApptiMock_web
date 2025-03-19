@@ -1,1 +1,22 @@
+<style>
+    .footer .nav-link {
+    transition: color 0.3s ease-in-out;
+}
+.footer .nav-link:hover {
+    color: #ffc107 !important; /* Highlight color on hover */
+}
 
+</style>
+<footer class="footer mt-auto py-4 bg-dark text-light">
+    <div class="container text-center">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-3 text-light">Home</a></li>
+            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link px-3 text-light">Contact</a></li>
+            <li class="nav-item"><a href="{% url 'blogs' %}" class="nav-link px-3 text-light">Blogs</a></li>
+            <li class="nav-item"><a href="{% url 'terms_conditions' %}" class="nav-link px-3 text-light">Terms & Conditions</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link px-3 text-light">About</a></li>
+            <li class="nav-item"><a href="{% url 'downloads' %}" class="nav-link px-3 text-light">Downloads</a></li>
+        </ul>
+        <p class="text-center mb-0">© 2024 ApptiMock, Inc</p>
+    </div>
+</footer>
