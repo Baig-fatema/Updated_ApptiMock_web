@@ -1,0 +1,112 @@
+/* Navbar Background */
+.navbar {
+    background: linear-gradient(to right, #ef7bf5, #ba5ed6); /* Blue to Purple Gradient */
+    padding: 12px 0;
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar .navbar-brand img {
+    max-width: 100px;
+}
+
+/* Navbar Links */
+.navbar .nav-link {
+    color: #151313 !important;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    color: #ffc107 !important; /* Yellow on Hover */
+}
+
+/* Active Link */
+.navbar .nav-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .dropdown-item {
+    color: #333;
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar .dropdown-item:hover {
+    background: #f8f9fa;
+    color: #007bff;
+}
+
+/* Search Bar */
+.navbar form .form-control {
+    border-radius: 8px;
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.navbar form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar form .btn-outline-success {
+    color: #fff;
+    border-color: #ffc107;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar form .btn-outline-success:hover {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/* Profile Image */
+.navbar form a img {
+    border: 2px solid #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar form a img:hover {
+    transform: scale(1.1);
+}
+
+/* Mobile Navbar */
+.container.text-center.my-4 {
+    background-color: #6c757d; /* Dark Gray */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container.text-center.my-4 .btn-outline-primary {
+    color: #fff;
+    border-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.container.text-center.my-4 .btn-outline-primary:hover {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .navbar-brand img {
+        max-width: 80px;
+    }
+
+    .navbar .nav-link {
+        font-size: 14px;
+    }
+
+    .navbar form .btn-primary,
+    .navbar form .btn-outline-success {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
