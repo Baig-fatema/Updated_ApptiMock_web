@@ -2,6 +2,8 @@
 
 ApptiMock is a comprehensive quiz application built using HTML, CSS, JavaScript, and Django. This application features multiple pages including a home page, leadership page, quiz page, about page, registration and login pages, a dashboard for superusers, and a blogs page.
 
+## live demo
+[ApptiMock_web] (https://baigfatemabegum.pythonanywhere.com)
 ![home](home.png)
 ## Features
 
